@@ -1,13 +1,8 @@
-import React from "react";
+import { PageLayout } from "./layouts/pageLayuot/pageLayout";
+import { PageForm } from "./pages/page-form/page-form";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-3xl font-bold text-red-500">Hello world! s</h1>
-      </header>
-    </div>
-  );
+  return <PageLayout />;
 }
 
 export default App;
