@@ -10,7 +10,7 @@ export const StepLayout: FC<StepLayoutProps> = ({
     <div className="step-layout">
       <h2>{title}</h2>
       <p>{description}</p>
-      <div className="step-content">{children}</div>
+      {children}
     </div>
   );
 };

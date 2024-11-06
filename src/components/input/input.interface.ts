@@ -1,6 +1,6 @@
+import { InputHTMLAttributes } from "react";
+
 export type InputProps = {
   label: string;
-  placeholder: string;
-  type: string;
-  htmlFor: string;
-};
+  error?: string;
+} & InputHTMLAttributes<HTMLInputElement>;

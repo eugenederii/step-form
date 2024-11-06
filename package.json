@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/material": "^6.1.6",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.8.6",
@@ -16,7 +17,9 @@
     "react-hook-form": "^7.53.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
-    "usehooks-ts": "^3.1.0"
+    "usehooks-ts": "^3.1.0",
+    "yup": "^1.4.0",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "start": "react-scripts start",
