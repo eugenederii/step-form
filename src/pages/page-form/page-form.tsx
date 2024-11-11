@@ -4,13 +4,14 @@ import { Input } from "../../components/input/input";
 import { useFormContext } from "react-hook-form";
 import { PageFormProps } from "./page-form.interface";
 import { useDeviceType } from "../../hooks/use-device-type";
+import { FormTypes } from "../../types/form-types";
 
 export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
   const {
     register,
     trigger,
     formState: { errors },
-  } = useFormContext();
+  } = useFormContext<FormTypes>();
 
   const deviceType = useDeviceType();
 
@@ -38,7 +39,6 @@ export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
           placeholder="e.g Stephen King"
           type="text"
           label="Name"
-          /*@ts-ignore*/
           error={errors.name?.message}
           {...register("name")}
         />
@@ -47,15 +47,13 @@ export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
           placeholder="e.g stephenking@lorem.com"
           type="text"
           label="Email Address"
-          /*@ts-ignore*/
-          error={errors.email?.message || ""}
+          error={errors.email?.message}
           {...register("email")}
         />
         <Input
           placeholder="e.g +1 234 567 890"
           type="number"
           label="Phone number"
-          /*@ts-ignore*/
           error={errors.phone?.message}
           {...register("phone")}
         />

@@ -6,14 +6,46 @@ import pro from "../../assets/images/icon-pro.svg";
 // components
 import { InputPlanCard } from "../../components/input-plan-card/input-plan-card";
 import { PagePlanProps } from "./page-plan.interface";
+import { useFormContext } from "react-hook-form";
+import { FormTypes } from "../../types/form-types";
 
 export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
   const [isMonthly, setIsMonthly] = useState(true);
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const {
+    register,
+    trigger,
+    formState: { errors },
+    setValue,
+  } = useFormContext<FormTypes>();
 
   const toggleBilling = () => setIsMonthly(!isMonthly);
 
+  const handlePlanChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const value = e.target.value;
+
+    setSelectedPlan(value);
+    setValue("plan", value);
+    trigger("plan");
+  };
+
+  const handleContinue = async (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const isValid = await trigger(["plan"]);
+
+    if (isValid) {
+      onContinue();
+    }
+  };
+
   return (
-    <div className="bg-white h-full  flex flex-col justify-between px-6 pt-6 md:px-8 md:pt-8 w-full rounded-lg shadow-xl md:shadow-none">
+    <form
+      onSubmit={handleContinue}
+      className="bg-white h-full  flex flex-col justify-between px-6 pt-6 md:px-8 md:pt-8 w-full rounded-lg shadow-xl md:shadow-none"
+    >
       <div className="flex flex-col gap-5">
         <h2 className="text-marine text-3xl font-semibold">Select your plan</h2>
         <p className="text-cool-gray leading-5">
@@ -25,34 +57,46 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
             alt="arcade"
             title="Arcade"
             price={isMonthly ? "$9/mo" : "$90/ur"}
-            name="arcade"
             value="arcade"
+            checked={selectedPlan === "arcade"}
             isMonthly={isMonthly}
+            {...register("plan")}
+            onChange={handlePlanChange}
           />
           <InputPlanCard
             img={advanced}
             alt="advanced"
             title="Advanced"
             price={isMonthly ? "$12/mo" : "$120/ur"}
-            name="plan-advanced"
+            checked={selectedPlan === "advanced"}
             value="advanced"
             isMonthly={isMonthly}
+            {...register("plan")}
+            onChange={handlePlanChange}
           />
           <InputPlanCard
             img={pro}
             alt="Pro"
             title="Pro"
             price={isMonthly ? "$15/mo" : "$150/ur"}
-            name="plan-pro"
             value="pro"
+            checked={selectedPlan === "pro"}
             isMonthly={isMonthly}
+            {...register("plan")}
+            onChange={handlePlanChange}
           />
         </div>
 
+        {errors.plan && (
+          <p className="text-berry-red font-medium text-md text-center">
+            {errors.plan.message}
+          </p>
+        )}
+
         <div className="flex w-full gap-6 items-center justify-center py-4  bg-gray-100 rounded-lg">
           <span
-            className={`font-medium ${
-              isMonthly ? "text-marine" : "text-gray-400"
+            className={`font-semibold ${
+              isMonthly ? "text-marine" : "text-cool-gray"
             }`}
           >
             Monthly
@@ -71,7 +115,7 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
           </label>
 
           <span
-            className={`font-medium ${
+            className={`font-semibold ${
               !isMonthly ? "text-marine" : "text-gray-400"
             }`}
           >
@@ -87,13 +131,12 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
           Go Back
         </button>
         <button
-          onClick={onContinue}
           className="bg-marine px-5 py-3 w-fit text-white rounded-md hover:bg-my-blue duration-500 transition-colors"
           type="submit"
         >
           Next Step
         </button>
       </div>
-    </div>
+    </form>
   );
 };

@@ -1,7 +1,13 @@
 import { type FC } from "react";
 import { PageFinishProps } from "./page-finish.interface";
+import { useFormContext } from "react-hook-form";
+import { FormTypes } from "../../types/form-types";
 
 export const PageFinish: FC<PageFinishProps> = ({ onBack, onContinue }) => {
+  const { register, getValues, watch } = useFormContext<FormTypes>();
+
+  const formValue = watch();
+
   return (
     <div className="bg-white h-full flex flex-col justify-between px-6 pt-6 md:px-8 md:pt-8  w-full rounded-lg shadow-xl md:shadow-none">
       <div className="flex flex-col gap-4">
@@ -18,7 +24,7 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack, onContinue }) => {
             <p className="text-marine font-semibold">$9/mo</p>
           </div>
           <div className="flex justify-between mt-4">
-            <p>Online service</p>
+            <p>{formValue.email}</p>
             <p>+$1/mo</p>
           </div>
         </div>
