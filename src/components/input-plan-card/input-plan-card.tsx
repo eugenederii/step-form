@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { type FC } from "react";
 import { InputPlanCardProps } from "./input-plan-card.interface";
 
 export const InputPlanCard: FC<InputPlanCardProps> = ({
@@ -12,10 +12,6 @@ export const InputPlanCard: FC<InputPlanCardProps> = ({
   isMonthly,
   onChange,
 }) => {
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSelectedPlan(e.target.value);
-  // };
-
   return (
     <label
       className={`w-full flex md:flex-col gap-4 p-4 md:p-6 rounded-md border border-solid border-light-gray transition-all duration-800 cursor-pointer hover:border-purp-blue  ${

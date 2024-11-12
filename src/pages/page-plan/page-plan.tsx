@@ -32,7 +32,7 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
     trigger("plan");
   };
 
-  const handleContinue = async (e: React.MouseEvent<HTMLFormElement>) => {
+  const handleContinue = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const isValid = await trigger(["plan"]);
 
@@ -88,7 +88,7 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
         </div>
 
         {errors.plan && (
-          <p className="text-berry-red font-medium text-md text-center">
+          <p className="text-berry-red font-medium text-md font-semibold text-center">
             {errors.plan.message}
           </p>
         )}

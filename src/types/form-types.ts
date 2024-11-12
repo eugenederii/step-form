@@ -3,5 +3,5 @@ export type FormTypes = {
   email: string;
   phone: string;
   plan: string;
-  pickOns: string;
+  pickOns: string[];
 };
