@@ -18,6 +18,7 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
     trigger,
     formState: { errors },
     setValue,
+    watch,
   } = useFormContext<FormTypes>();
 
   const toggleBilling = () => setIsMonthly(!isMonthly);
@@ -31,6 +32,10 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
     setValue("plan", value);
     trigger("plan");
   };
+
+  const plan = watch("plan");
+
+  console.log(plan);
 
   const handleContinue = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,7 +93,7 @@ export const PagePlan: FC<PagePlanProps> = ({ onBack, onContinue }) => {
         </div>
 
         {errors.plan && (
-          <p className="text-berry-red font-medium text-md font-semibold text-center">
+          <p className="text-berry-red text-md font-semibold text-center">
             {errors.plan.message}
           </p>
         )}

@@ -16,16 +16,16 @@ const defaultValues = {
   name: "",
   email: "",
   phone: "",
-  plan: "",
   pickOns: [],
+  plan: "",
 };
 
 const validationSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number should be at least 10 digits"),
-  plan: z.string().min(1, "Select plan"),
   pickOns: z.array(z.string()).min(1, "Please select at least one add-on"),
+  plan: z.string().min(1, "Select plan"),
 });
 
 function App() {

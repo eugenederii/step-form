@@ -3,13 +3,17 @@ import { PageFinishProps } from "./page-finish.interface";
 import { useFormContext } from "react-hook-form";
 import { FormTypes } from "../../types/form-types";
 
-export const PageFinish: FC<PageFinishProps> = ({ onBack, onContinue }) => {
+export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
   const { register, getValues, watch } = useFormContext<FormTypes>();
 
   const formValue = watch();
 
+  const plan = getValues("plan");
+
+  console.log(plan);
+
   return (
-    <div className="bg-white h-full flex flex-col justify-between px-6 pt-6 md:px-8 md:pt-8  w-full rounded-lg shadow-xl md:shadow-none">
+    <form className="bg-white h-full flex flex-col justify-between px-6 pt-6 md:px-8 md:pt-8  w-full rounded-lg shadow-xl md:shadow-none">
       <div className="flex flex-col gap-4">
         <h2 className="text-marine text-3xl font-semibold">Finishing up</h2>
         <p className="text-cool-gray leading-5">
@@ -42,13 +46,12 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack, onContinue }) => {
           Go Back
         </button>
         <button
-          onClick={onContinue}
           className="bg-purp-blue px-5 py-3 w-fit text-white rounded-md hover:bg-[#8b8ff4] duration-400 transition-colors"
           type="submit"
         >
           Confirm
         </button>
       </div>
-    </div>
+    </form>
   );
 };

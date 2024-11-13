@@ -30,7 +30,7 @@ export const AddOnsCard: FC<AddOnsCardProps> = ({
       <div className="flex gap-2 md:gap-5 items-center">
         <Checkbox
           size="medium"
-          classes={{ sizeMedium: "!w-10 !h-10" }}
+          classes={{ sizeMedium: "!w-10 !h-10", checked: "!text-marine" }}
           value={value}
           checked={checked}
           onChange={onChange}

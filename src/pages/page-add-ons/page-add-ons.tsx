@@ -1,9 +1,9 @@
-import { useState, type FC } from "react";
+import { type FC } from "react";
+import { useFormContext } from "react-hook-form";
 // components
 import { AddOnsCard } from "../../components/add-ons-card/add-ons-card";
 // types
 import { PageAddOnsProps } from "./page-add-ons.interface";
-import { useFormContext } from "react-hook-form";
 
 export const PageAddOns: FC<PageAddOnsProps> = ({ onBack, onContinue }) => {
   const {
@@ -13,7 +13,7 @@ export const PageAddOns: FC<PageAddOnsProps> = ({ onBack, onContinue }) => {
     watch,
   } = useFormContext();
 
-  const { selectedPickOns } = watch("pickOns") || [];
+  const pickOns = watch("pickOns") || [];
 
   const handleBack = () => {
     setValue("plan", "");
@@ -42,36 +42,53 @@ export const PageAddOns: FC<PageAddOnsProps> = ({ onBack, onContinue }) => {
 
         <AddOnsCard
           onChange={() => {
-            const pickOns = selectedPickOns.includes("Online service")
-              ? selectedPickOns.filter(
-                  (item: string) => item !== "Online Service"
-                )
-              : [...selectedPickOns, "Online service"];
+            const updatedPickOns = pickOns.includes("Online service")
+              ? pickOns.filter((item: string) => item !== "Online service")
+              : [...pickOns, "Online service"];
 
-            setValue("pickOns", pickOns);
+            setValue("pickOns", updatedPickOns);
+            trigger("pickOns");
           }}
           title="Online service"
           subtitle="Access to multiplayer games"
           price="+10/yr"
           value="Online service"
-          checked={selectedPickOns.includes("Online service")}
+          checked={pickOns.includes("Online service")}
         />
         <AddOnsCard
+          onChange={() => {
+            const updatedPickOns = pickOns.includes("Larger storage")
+              ? pickOns.filter((item: string) => item !== "Larger storage")
+              : [...pickOns, "Larger storage"];
+
+            setValue("pickOns", updatedPickOns);
+            trigger("pickOns");
+          }}
           title="Larger storage"
           subtitle="Extra 1TB of cloud save"
           price="+20/yr"
           value="Larger storage"
-          checked={selectedPickOns.includes("Larger storage")}
+          checked={pickOns.includes("Larger storage")}
         />
         <AddOnsCard
+          onChange={() => {
+            const updatedPickOns = pickOns.includes("Customizable profile")
+              ? pickOns.filter(
+                  (item: string) => item !== "Customizable profile"
+                )
+              : [...pickOns, "Customizable profile"];
+
+            setValue("pickOns", updatedPickOns);
+            trigger("pickOns");
+          }}
           title="Customizable profile"
           subtitle="Custom theme on your profile"
           price="+20/yr"
           value="Customizable profile"
-          checked={selectedPickOns.includes("Customizable profile")}
+          checked={pickOns.includes("Customizable profile")}
         />
         {typeof errors.pickOns?.message === "string" && (
-          <p className="text-berry-red font-semibold pl-8">
+          <p className="text-berry-red font-semibold text-center">
             {errors.pickOns.message}
           </p>
         )}

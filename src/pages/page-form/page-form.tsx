@@ -52,7 +52,7 @@ export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
         />
         <Input
           placeholder="e.g +1 234 567 890"
-          type="number"
+          type="tel"
           label="Phone number"
           error={errors.phone?.message}
           {...register("phone")}
