@@ -27,7 +27,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
                 currentStep === index + 1
                   ? "bg-light-blue border-light-blue text-marine"
                   : "bg-transparent text-white"
-              } w-[33px] font-medium mt-5 text-xl h-[33px] z-40 flex items-center justify-center border border-solid rounded-full`}
+              } w-[33px] md:w-[40px] font-medium mt-5 text-xl h-[33px] md:h-[40px] z-40 flex items-center justify-center border border-solid rounded-full`}
             >
               {index + 1}
             </div>

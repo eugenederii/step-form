@@ -72,7 +72,7 @@ export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
             className="bg-marine px-5 py-3 w-fit text-white rounded-md hover:bg-my-blue duration-400 transition-colors"
             type="submit"
           >
-            Go back
+            Next Step
           </button>
         </div>
       )}
