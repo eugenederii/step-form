@@ -21,10 +21,17 @@ const defaultValues = {
   plan: { value: "", price: "", billingType: "", isMonthly: true },
 };
 
+const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
 const validationSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number should be at least 10 digits"),
+  phone: z
+    .string()
+    .regex(
+      phoneRegex,
+      `Phone number should start with + and contain at least 10 digits`
+    ),
   pickOns: z
     .array(
       z.object({
