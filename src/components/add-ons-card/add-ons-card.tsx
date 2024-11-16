@@ -19,7 +19,7 @@ export const AddOnsCard: FC<AddOnsCardProps> = ({
       }}
       className={`${
         checked ? "border-purp-blue" : "border-light-gray"
-      } flex justify-between items-center py-3 px-2 md:p-5 rounded-md border border-solid transition cursor-pointer`}
+      } flex justify-between items-center py-3 px-2 md:p-5 rounded-md border border-solid transition duration-400 hover:border-purp-blue cursor-pointer`}
     >
       <div className="flex gap-2 md:gap-5 items-center">
         <Checkbox
