@@ -70,7 +70,7 @@ export const PagePlan: FC<PagePlanProps> = ({
         <p className="text-cool-gray leading-5">
           You have the option of monthly or yearly billing.
         </p>
-        <div className="flex flex-col gap-3 md:flex-row">
+        <div className="flex flex-col md:pt-7 gap-3 md:gap-5 md:flex-row">
           <InputPlanCard
             img={arcade}
             alt="arcade"
@@ -118,7 +118,7 @@ export const PagePlan: FC<PagePlanProps> = ({
           </p>
         )}
 
-        <div className="flex w-full gap-6 items-center justify-center py-4  bg-gray-100 rounded-lg">
+        <div className="flex w-full md:mt-5 gap-6 items-center justify-center py-4  bg-gray-100 rounded-lg">
           <span
             className={`font-semibold ${
               isMonthly ? "text-marine" : "text-cool-gray"
@@ -153,7 +153,7 @@ export const PagePlan: FC<PagePlanProps> = ({
         <div className="flex justify-between">
           <button
             onClick={handleBack}
-            className=" px-7 py-3 w-fit text-cool-gray rounded-md hover:bg-light-gray duration-400 transition-colors font-medium"
+            className="py-3 w-fit text-cool-gray rounded-md hover:text-marine  duration-400 transition-colors font-semibold "
           >
             Go Back
           </button>
@@ -169,7 +169,7 @@ export const PagePlan: FC<PagePlanProps> = ({
         <div className="flex justify-between fixed w-full bg-white px-5 py-5 bottom-0 left-0">
           <button
             onClick={handleBack}
-            className=" py-3 w-fit text-cool-gray rounded-md duration-400 transition-colors font-medium"
+            className="py-3 w-fit text-cool-gray rounded-md duration-400 transition-colors font-medium"
           >
             Go Back
           </button>

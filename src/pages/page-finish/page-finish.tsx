@@ -67,7 +67,7 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
         <div className="flex justify-between">
           <button
             onClick={onBack}
-            className=" px-7 py-3 w-fit text-cool-gray rounded-md hover:bg-light-gray duration-400 transition-colors font-medium"
+            className="py-3 w-fit text-cool-gray rounded-md hover:text-marine duration-400 transition-colors font-semibold"
           >
             Go Back
           </button>
