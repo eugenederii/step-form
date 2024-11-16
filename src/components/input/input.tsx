@@ -3,11 +3,9 @@ import { InputProps } from "./input.interface";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, name, error, ...props }, ref) => {
-    console.log(error);
-
     return (
       <div>
-        <label className="block text-marine font-medium" htmlFor={name}>
+        <label className="block text-marine" htmlFor={name}>
           {label}
         </label>
         <input

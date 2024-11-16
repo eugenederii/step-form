@@ -2,8 +2,8 @@ import thank from "../../assets/images/icon-thank-you.svg";
 
 export const PageThankYou = () => {
   return (
-    <div className="bg-white h-full text-center flex flex-col my-auto justify-center px-6 pt-6 md:px-8 md:pt-8 w-full rounded-lg shadow-xl md:shadow-none pb-24 md:pb-0">
-      <div className="mb-3 md:mb-5">
+    <div className="bg-white h-full text-center flex flex-col my-auto justify-center w-full rounded-lg shadow-xl md:shadow-none py-20 md:py-9 px-7 md:ml-8  md:mt-4">
+      <div className="mb-6 md:mb-5 ">
         <img src={thank} className="w-20 h-20" alt="thank you" />
       </div>
       <h2 className="text-marine font-semibold text-3xl mb-3 md:mb-5">

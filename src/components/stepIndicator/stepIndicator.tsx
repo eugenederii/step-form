@@ -14,20 +14,20 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
   return (
     <div className="relative w-full h-[25vh] md:h-[600px] md:max-w-[320px] ">
       <img
-        className="absolute w-full h-full object-cover object-[0%_87%] z-0 md:rounded-xl"
+        className="absolute w-full h-full object-cover object-[0%_90%] z-0 md:rounded-xl"
         src={bg}
         alt="bg"
       />
 
-      <div className="flex md:flex-col justify-center gap-1 md:gap-6 text-center top-3 left-[-14px] p-6 relative z-10">
+      <div className="flex md:flex-col justify-center ml-4 gap-4 md:gap-6 text-center pt-3 relative z-10">
         {steps.map((step, index) => (
-          <div className="flex pl-5 gap-7" key={index}>
+          <div className="flex gap-7" key={index}>
             <div
               className={`${
                 currentStep === index + 1
                   ? "bg-light-blue border-light-blue text-marine"
                   : "bg-transparent text-white"
-              } w-[40px] font-medium mt-5 text-xl h-[40px] z-40 flex items-center justify-center border border-solid rounded-full`}
+              } w-[33px] font-medium mt-5 text-xl h-[33px] z-40 flex items-center justify-center border border-solid rounded-full`}
             >
               {index + 1}
             </div>

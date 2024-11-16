@@ -26,8 +26,8 @@ export const InputPlanCard: FC<InputPlanCardProps> = ({
         name={name}
         value={value}
       />
-      <img className="w-[50px] h-[50px] md:mb-7" src={img} alt={alt} />
-      <div className="flex flex-col gap-1 md:gap-2">
+      <img className="w-[45px] h-[45px] md:mb-7" src={img} alt={alt} />
+      <div className="flex flex-col gap-[2px] md:gap-2">
         <p className="font-medium text-lg">{title}</p>
         <span className="text-gray-500">{price}</span>
 

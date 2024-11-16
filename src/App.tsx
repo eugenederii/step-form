@@ -10,31 +10,56 @@ import { PageFinish } from "./pages/page-finish/page-finish";
 import { PagePlan } from "./pages/page-plan/page-plan";
 import { PageThankYou } from "./pages/page-thank-you/page-thank-you";
 // types
-import { FormTypes } from "./types/form-types";
+import { type FormTypes } from "./types/form-types";
+import { type PickOns } from "./types/form-types";
 
 const defaultValues = {
   name: "",
   email: "",
   phone: "",
-  pickOns: [],
-  plan: "",
+  pickOns: [] as PickOns,
+  plan: { value: "", price: "", billingType: "", isMonthly: true },
 };
 
 const validationSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Phone number should be at least 10 digits"),
-  pickOns: z.array(z.string()).min(1, "Please select at least one add-on"),
-  plan: z.string().min(1, "Select plan"),
+  pickOns: z
+    .array(
+      z.object({
+        value: z.string(),
+        price: z.string(),
+      })
+    )
+    .min(1, "Please select at least one add-on"),
+  plan: z.object({
+    value: z.string().min(1, "Select a plan"),
+    price: z.string(),
+    isMonthly: z.boolean().optional(),
+  }),
 });
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
-
+  // form
   const methods = useForm<FormTypes>({
     defaultValues: defaultValues,
     resolver: zodResolver(validationSchema),
   });
+  // methods
+  const {
+    watch,
+    setValue,
+    formState: { isSubmitSuccessful },
+  } = methods;
+
+  const isMonthly = watch("plan.isMonthly");
+
+  const toggleBilling = () => {
+    const currentBilling = watch("plan.isMonthly");
+    setValue("plan.isMonthly", !currentBilling);
+  };
 
   const handleNextStep = () => setCurrentStep((prev) => prev + 1);
   const handlePrevStep = () => setCurrentStep((prev) => prev - 1);
@@ -44,17 +69,27 @@ function App() {
       case 1:
         return <PageForm onContinue={handleNextStep} />;
       case 2:
-        return <PagePlan onContinue={handleNextStep} onBack={handlePrevStep} />;
+        return (
+          <PagePlan
+            toggleBilling={toggleBilling}
+            isMonthly={isMonthly}
+            onContinue={handleNextStep}
+            onBack={handlePrevStep}
+          />
+        );
       case 3:
         return (
-          <PageAddOns onContinue={handleNextStep} onBack={handlePrevStep} />
+          <PageAddOns
+            isMonthly={isMonthly}
+            onContinue={handleNextStep}
+            onBack={handlePrevStep}
+          />
         );
       case 4:
-        return (
-          <PageFinish onBack={handlePrevStep} onContinue={handleNextStep} />
-        );
-      case 5:
-        return <PageThankYou />;
+        if (isSubmitSuccessful) {
+          return <PageThankYou />;
+        }
+        return <PageFinish onBack={handlePrevStep} />;
 
       default:
         return <PageForm onContinue={handleNextStep} />;
