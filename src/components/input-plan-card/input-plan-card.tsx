@@ -14,7 +14,7 @@ export const InputPlanCard: FC<InputPlanCardProps> = ({
 }) => {
   return (
     <label
-      className={`w-full flex md:flex-col gap-4 p-4 md:p-6 rounded-md border border-solid border-light-gray transition-all duration-800 cursor-pointer hover:border-purp-blue  ${
+      className={`w-full flex md:flex-col gap-4 p-4 md:p-6 rounded-lg border border-solid border-light-gray transition-all duration-800 cursor-pointer hover:border-purp-blue  ${
         checked ? "border-purp-blue" : "border-light-gray "
       }`}
     >

@@ -12,14 +12,14 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
   const steps = ["Your Info", "Select Plan", "Add-Ons", "Summary"];
 
   return (
-    <div className="relative w-full h-[25vh] md:h-[600px] md:max-w-[320px] ">
+    <div className="relative w-full h-[25vh] md:h-[700px] md:max-w-[320px] ">
       <img
         className="absolute w-full h-full object-cover object-[0%_90%] z-0 md:rounded-xl"
         src={bg}
         alt="bg"
       />
 
-      <div className="flex md:flex-col justify-center md:ml-4 gap-4 md:gap-6 text-center pt-3 pl-5 relative z-10">
+      <div className="flex md:flex-col justify-center md:ml-4 gap-4 md:gap-6 text-center pt-5 pl-5 relative z-10">
         {steps.map((step, index) => (
           <div className="flex  md:gap-6" key={index}>
             <div

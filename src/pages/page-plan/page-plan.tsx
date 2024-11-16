@@ -63,7 +63,7 @@ export const PagePlan: FC<PagePlanProps> = ({
   return (
     <form
       onSubmit={handleContinue}
-      className="bg-white h-full  flex flex-col justify-between w-full rounded-lg shadow-xl md:shadow-none py-9 px-7"
+      className="bg-white h-full  flex flex-col justify-between w-full rounded-lg shadow-xl md:shadow-none md:pt-10 py-9 md:py-6 px-7 md:px-12"
     >
       <div className="flex flex-col gap-4">
         <h2 className="text-marine text-3xl font-semibold">Select your plan</h2>
