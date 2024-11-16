@@ -28,7 +28,7 @@ export const PageForm: FC<PageFormProps> = ({ onContinue }) => {
 
   return (
     <form
-      className="bg-white h-full flex flex-col justify-between w-full rounded-lg shadow-xl md:shadow-none py-9 px-7 md:ml-8 pt-6 md:mt-4"
+      className="bg-white h-full flex flex-col justify-between w-full rounded-lg shadow-xl md:shadow-none py-9 px-7"
       onSubmit={handleContinue}
     >
       <div className="flex flex-col gap-5">
