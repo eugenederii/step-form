@@ -19,9 +19,9 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
         alt="bg"
       />
 
-      <div className="flex md:flex-col justify-center ml-4 gap-4 md:gap-6 text-center pt-3 relative z-10">
+      <div className="flex md:flex-col justify-center md:ml-4 gap-4 md:gap-6 text-center pt-3 pl-5 relative z-10">
         {steps.map((step, index) => (
-          <div className="flex gap-7" key={index}>
+          <div className="flex  md:gap-6" key={index}>
             <div
               className={`${
                 currentStep === index + 1
