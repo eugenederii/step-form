@@ -31,7 +31,9 @@ export const AddOnsCard: FC<AddOnsCardProps> = ({
         />
         <div className="flex flex-col gap-1">
           <p className="text-marine font-semibold">{title}</p>
-          <span className="text-cool-gray text-sm">{subtitle}</span>
+          <span className="text-cool-gray text-sm md:text-base">
+            {subtitle}
+          </span>
         </div>
       </div>
       <span className="text-purp-blue font-medium">{price}</span>
