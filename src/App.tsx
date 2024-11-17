@@ -104,9 +104,11 @@ function App() {
   };
 
   return (
-    <PageLayout currentStep={currentStep}>
-      <FormProvider {...methods}>{renderPage()}</FormProvider>
-    </PageLayout>
+    <main>
+      <PageLayout currentStep={currentStep}>
+        <FormProvider {...methods}>{renderPage()}</FormProvider>
+      </PageLayout>
+    </main>
   );
 }
 
