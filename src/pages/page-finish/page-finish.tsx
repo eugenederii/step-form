@@ -8,7 +8,7 @@ import { FormTypes, PickOns } from "../../types/form-types";
 export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
   const deviceType = useDeviceType();
   // form
-  const { watch, handleSubmit } = useFormContext<FormTypes>();
+  const { watch, handleSubmit, setValue } = useFormContext<FormTypes>();
   const { pickOns, plan } = watch();
 
   const totalPrice = (planPrice: string, pickOns: PickOns) => {
@@ -22,6 +22,12 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
     );
 
     return planPriceNumber + pickOnsTotal;
+  };
+
+  const handleBack = () => {
+    setValue("pickOns", []);
+
+    onBack();
   };
 
   const onSubmit = (data: FormTypes) => {
@@ -51,7 +57,7 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
           {pickOns.map((item, index) => (
             <div key={index} className="flex justify-between mt-4">
               <p className="text-cool-gray">{item.value}</p>
-              <p className="text-marine font-normal">+{item.price}</p>
+              <p className="text-marine font-normal">{item.price}</p>
             </div>
           ))}
         </div>
@@ -66,7 +72,7 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
       {deviceType !== "mobile" && (
         <div className="flex justify-between">
           <button
-            onClick={onBack}
+            onClick={handleBack}
             className="py-3 w-fit text-cool-gray rounded-md hover:text-marine duration-400 transition-colors font-semibold"
           >
             Go Back
@@ -82,7 +88,7 @@ export const PageFinish: FC<PageFinishProps> = ({ onBack }) => {
       {deviceType === "mobile" && (
         <div className="flex justify-between fixed w-full bg-white px-5 py-5 bottom-0 left-0">
           <button
-            onClick={onBack}
+            onClick={handleBack}
             className="py-3 w-fit text-cool-gray rounded-md duration-400 transition-colors font-medium"
           >
             Go Back

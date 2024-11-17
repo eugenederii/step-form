@@ -57,9 +57,9 @@ export const PageAddOns: FC<PageAddOnsProps> = ({
   };
 
   // price
-  const priceOnline = isMonthly ? "1/yr" : "10/yr";
-  const priceLagere = isMonthly ? "2/yr" : "20/yr";
-  const priceCusmom = isMonthly ? "2/yr" : "20/yr";
+  const priceOnline = isMonthly ? "+1/mo" : "+10/yr";
+  const priceLagere = isMonthly ? "+2/mo" : "+20/yr";
+  const priceCusmom = isMonthly ? "+2/mo" : "+20/yr";
 
   return (
     <form
